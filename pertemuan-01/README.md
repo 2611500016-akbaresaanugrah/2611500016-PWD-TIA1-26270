@@ -5,7 +5,7 @@ Pemrograman web adalah proses membuat dan mengembangkan website agar bisa diguna
 2. **Arsitektur Klien-Peladen**
 Klien adalah perangkat yang kita gunakan untuk mengakses website, misalnya HP atau laptop. Sedangkan peladen (server) adalah komputer yang menyimpan dan mengolah data website. Jadi, saat kita membuka website, perangkat kita meminta data ke server, lalu server mengirimkan data tersebut kembali.
 
-3.**HTTP Request dan Response**
+3. **HTTP Request dan Response**
 HTTP Request adalah permintaan yang dikirim oleh browser ke server, misalnya saat kita membuka sebuah halaman. Setelah menerima permintaan, server memberikan HTTP Response berupa data atau informasi yang diminta. Sederhananya, request = meminta, sedangkan response = jawaban dari server.
 
 4. **HTML, CSS, JavaScript, PHP, MySQL**
