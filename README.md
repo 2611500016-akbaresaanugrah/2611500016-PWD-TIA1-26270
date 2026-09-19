@@ -1,5 +1,5 @@
 # 2611500016-PWD-TIA1-26270
-<!DOCTYPE html>
+
 <html>
 <head>
      Pemrograman Web Dasar
