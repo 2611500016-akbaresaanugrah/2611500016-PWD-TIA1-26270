@@ -47,8 +47,11 @@ aria-expanded="false"
 </header>
 <main>
 <section id="home">
+
 <h2>Selamat Datang</h2>
-<p>Halo, saya Akbar Esa Anugrah. Saya sedang mempelajari Pemrograman Web Dasar.</p>
+<p>Halo, saya <strong><?php echo $namaMahasiswa; ?></strong>. Saya sedang mempelajari matakuliah
+<strong><?php print NAMA_MATA_KULIAH; ?></strong> pada tahun akademik <?php echo $tahunAkademik;
+?>.</p>
 <img src="img/foto-profil.jpg" alt="Foto profil AKBAR ESA ANUGRAH" width="140" />
 </section>
 <section id="about">
@@ -68,7 +71,7 @@ aria-expanded="false"
 <h2>Kontak</h2>
 <p>
 Kunjungi
-<a href="https://github.com/2611500016-akbaresaanugrah">profil GitHub saya</a>.
+<a target="_blank" href="https://github.com/2611500016-akbaresaanugrah">profil GitHub saya</a>.
 </p>
 <form id="contactForm" action="index.html" method="get" novalidate>
 <div class="form-group">
