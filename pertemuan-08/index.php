@@ -69,9 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // P6: PHP dasar dan pemrograman sisi peladen
-$nim = "2611500016";
-$namaMahasiswa = "Akbar Esa Anugrah";
-$programStudi = "TI";
+$nim = "0344300002";
+$namaMahasiswa = "Cantika Putih";
+$programStudi = "SI";
 $tahunAkademik = "2026/2027";
 $semester = 1;
 $ipk = 3.75;
@@ -79,7 +79,7 @@ $statusAktif = true;
 $catatanTambahan = null;
 
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
-const PROFIL_GITHUB = "2611500016-akbaresaanugrah";
+const PROFIL_GITHUB = "satpamal";
 
 $batasSemester = 8;
 $sisaSemester = $batasSemester - $semester;
