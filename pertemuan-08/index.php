@@ -1,40 +1,74 @@
 <?php
 session_start();
 
-// P7: Memproses data formulir dan menyimpannya ke dalam session.
+// Memproses formulir menggunakan POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	$nama = trim((string) ($_POST["nama"] ?? ""));
-	$email = trim((string) ($_POST["email"] ?? ""));
-	$semesterForm = trim((string) ($_POST["semester"] ?? ""));
-	$tanggal = trim((string) ($_POST["tanggal"] ?? ""));
-	$jenisPesan = trim((string) ($_POST["jenis_pesan"] ?? ""));
-	$minat = $_POST["minat"] ?? [];
-	$prodi = trim((string) ($_POST["prodi"] ?? ""));
-	$pesan = trim((string) ($_POST["pesan"] ?? ""));
 
-	// Checkbox dapat mengirimkan lebih dari satu nilai.
-	if (!is_array($minat)) {
-		$minat = [];
-	}
+    // Memproses formulir Rencana Kegiatan
+    if (isset($_POST["nama_kegiatan"])) {
 
-	// Menyimpan setiap nilai formulir ke dalam session secara terpisah.
-	$_SESSION["nama"] = $nama;
-	$_SESSION["email"] = $email;
-	$_SESSION["semester"] = $semesterForm;
-	$_SESSION["tanggal"] = $tanggal;
-	$_SESSION["jenis_pesan"] = $jenisPesan;
-	$_SESSION["minat"] = $minat;
-	$_SESSION["prodi"] = $prodi;
-	$_SESSION["pesan"] = $pesan;
+        $namaKegiatan = trim((string) ($_POST["nama_kegiatan"] ?? ""));
+        $kategoriKegiatan = trim((string) ($_POST["kategori_kegiatan"] ?? ""));
+        $tanggalPelaksanaan = trim((string) ($_POST["tanggal_pelaksanaan"] ?? ""));
+        $lokasiKegiatan = trim((string) ($_POST["lokasi_kegiatan"] ?? ""));
+        $deskripsiKegiatan = trim((string) ($_POST["deskripsi_kegiatan"] ?? ""));
 
-	// PRG: mencegah pengiriman POST berulang ketika halaman dimuat ulang.
-	header("Location: index.php#contact");
-	exit;
+        // Validasi sisi peladen
+        if (
+            $namaKegiatan === "" ||
+            $kategoriKegiatan === "" ||
+            $tanggalPelaksanaan === "" ||
+            $lokasiKegiatan === "" ||
+            $deskripsiKegiatan === ""
+        ) {
+            $_SESSION["error_kegiatan"] = "Semua kolom wajib diisi.";
+        } else {
+
+            // Menyimpan data ke session
+            $_SESSION["rencana_kegiatan"] = [
+                "nama" => $namaKegiatan,
+                "kategori" => $kategoriKegiatan,
+                "tanggal" => $tanggalPelaksanaan,
+                "lokasi" => $lokasiKegiatan,
+                "deskripsi" => $deskripsiKegiatan
+            ];
+
+            unset($_SESSION["error_kegiatan"]);
+        }
+
+        // Post-Redirect-Get
+        header("Location: index.php#rencana-kegiatan");
+        exit;
+    }
+
+    // P7: Memproses formulir Kontak
+    $nama = trim((string) ($_POST["nama"] ?? ""));
+    $email = trim((string) ($_POST["email"] ?? ""));
+    $semesterForm = trim((string) ($_POST["semester"] ?? ""));
+    $tanggal = trim((string) ($_POST["tanggal"] ?? ""));
+    $jenisPesan = trim((string) ($_POST["jenis_pesan"] ?? ""));
+    $minat = $_POST["minat"] ?? [];
+    $prodi = trim((string) ($_POST["prodi"] ?? ""));
+    $pesan = trim((string) ($_POST["pesan"] ?? ""));
+
+    if (!is_array($minat)) {
+        $minat = [];
+    }
+
+    $_SESSION["nama"] = $nama;
+    $_SESSION["email"] = $email;
+    $_SESSION["semester"] = $semesterForm;
+    $_SESSION["tanggal"] = $tanggal;
+    $_SESSION["jenis_pesan"] = $jenisPesan;
+    $_SESSION["minat"] = $minat;
+    $_SESSION["prodi"] = $prodi;
+    $_SESSION["pesan"] = $pesan;
+
+    header("Location: index.php#contact");
+    exit;
 }
 
-// Mengamankan data sebelum ditampilkan kembali ke halaman HTML.
 // P6: PHP dasar dan pemrograman sisi peladen
-// Bagian 1: Variabel dan konstanta
 $nim = "2611500016";
 $namaMahasiswa = "Akbar Esa Anugrah";
 $programStudi = "TI";
@@ -47,33 +81,30 @@ $catatanTambahan = null;
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
 const PROFIL_GITHUB = "2611500016-akbaresaanugrah";
 
-// Bagian 2: Operator
 $batasSemester = 8;
 $sisaSemester = $batasSemester - $semester;
 $semesterValid = $semester >= 1 && $semester <= $batasSemester;
 $statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
 
-// Bagian 3: Percabangan if-elseif-else
 if ($semester < 3) {
-	$keteranganSemester = "Semester awal";
+    $keteranganSemester = "Semester awal";
 } elseif ($semester <= 6) {
-	$keteranganSemester = "Semester menengah";
+    $keteranganSemester = "Semester menengah";
 } else {
-	$keteranganSemester = "Semester akhir";
+    $keteranganSemester = "Semester akhir";
 }
 
 $namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik Informatika" : "Lainnya");
 
-// Bagian 4: Percabangan switch-case-default
 switch ($programStudi) {
-	case "SI":
-		$fokusProgramStudi = "Sistem informasi dan proses bisnis";
-		break;
-	case "TI":
-		$fokusProgramStudi = "Komputasi dan pengembangan perangkat lunak";
-		break;
-	default:
-		$fokusProgramStudi = "Belum ditentukan";
+    case "SI":
+        $fokusProgramStudi = "Sistem informasi dan proses bisnis";
+        break;
+    case "TI":
+        $fokusProgramStudi = "Komputasi dan pengembangan perangkat lunak";
+        break;
+    default:
+        $fokusProgramStudi = "Belum ditentukan";
 }
 ?>
 <!doctype html>
