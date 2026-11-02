@@ -107,6 +107,7 @@ switch ($programStudi) {
 				<li><a href="#home">Beranda</a></li>
 				<li><a href="#about">Tentang</a></li>
 				<li><a href="#contact">Kontak</a></li>
+				<li><a href="#rencana-kegiatan">Rencana Kegiatan</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -118,7 +119,7 @@ switch ($programStudi) {
 
 			<img src="img/foto-profil.jpg" alt="Foto profil Nama Mahasiswa" />
 		</section>
-
+		
 		<section id="about">
 			<h2>Tentang Saya</h2>
 
@@ -173,6 +174,95 @@ switch ($programStudi) {
 				</ol>
 			</article>
 		</section>
+
+		<section id="rencana-kegiatan">
+			<h2>Rencana Kegiatan</h2>
+
+			<article>
+				<h3>Daftar Kegiatan</h3>
+				<ul>
+					<li>Kegiatan 1: Presentasi proyek akhir</li>
+					<li>Kegiatan 2: Workshop PHP</li>
+					<li>Kegiatan 3: Ujian tengah semester</li>
+				</ul>
+			</article>
+		</section>
+		
+<section id="rencana-kegiatan">
+    <div class="container">
+        <h2>Rencana Kegiatan Mahasiswa</h2>
+
+        <form action="#" method="post">
+
+            <div class="form-group">
+                <label for="nama-kegiatan">Nama Kegiatan</label>
+                <input
+                    type="text"
+                    id="nama-kegiatan"
+                    name="nama_kegiatan"
+                    placeholder="Masukkan nama kegiatan"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="kategori-kegiatan">Kategori Kegiatan</label>
+                <select
+                    id="kategori-kegiatan"
+                    name="kategori_kegiatan"
+                    required
+                >
+                    <option value="">Pilih kategori kegiatan</option>
+                    <option value="Akademik">Akademik</option>
+                    <option value="Olahraga">Olahraga</option>
+                    <option value="Seni">Seni dan Budaya</option>
+                    <option value="Sosial">Sosial</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal-pelaksanaan">
+                    Tanggal Pelaksanaan
+                </label>
+                <input
+                    type="date"
+                    id="tanggal-pelaksanaan"
+                    name="tanggal_pelaksanaan"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="lokasi-kegiatan">Lokasi Kegiatan</label>
+                <input
+                    type="text"
+                    id="lokasi-kegiatan"
+                    name="lokasi_kegiatan"
+                    placeholder="Masukkan lokasi kegiatan"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="deskripsi-kegiatan">
+                    Deskripsi Kegiatan
+                </label>
+                <textarea
+                    id="deskripsi-kegiatan"
+                    name="deskripsi_kegiatan"
+                    rows="5"
+                    placeholder="Jelaskan rencana kegiatan"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit">Kirim</button>
+            <button type="reset">Batal</button>
+
+        </form>
+    </div>
+</section>
 
 		<section id="contact">
 			<h2>Kontak</h2>
