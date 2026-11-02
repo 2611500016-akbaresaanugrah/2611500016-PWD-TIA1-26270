@@ -208,8 +208,32 @@ switch ($programStudi) {
 		<section id="rencana-kegiatan">
     <h2>Rencana Kegiatan Mahasiswa</h2>
 
-    <form id="rencanaForm" action="index.php" method="post">
+    <form id="rencanaForm" action="index.php" method="post"
+		<?php if (isset($_SESSION["rencana_kegiatan"])): ?>
+    <article class="submission-result">
+        <h3>Data Rencana Kegiatan</h3>
 
+        <p><strong>Nama Kegiatan:</strong>
+            <?= htmlspecialchars($_SESSION["rencana_kegiatan"]["nama"], ENT_QUOTES, "UTF-8") ?>
+        </p>
+
+        <p><strong>Kategori:</strong>
+            <?= htmlspecialchars($_SESSION["rencana_kegiatan"]["kategori"], ENT_QUOTES, "UTF-8") ?>
+        </p>
+
+        <p><strong>Tanggal:</strong>
+            <?= htmlspecialchars($_SESSION["rencana_kegiatan"]["tanggal"], ENT_QUOTES, "UTF-8") ?>
+        </p>
+
+        <p><strong>Lokasi:</strong>
+            <?= htmlspecialchars($_SESSION["rencana_kegiatan"]["lokasi"], ENT_QUOTES, "UTF-8") ?>
+        </p>
+
+        <p><strong>Deskripsi:</strong>
+            <?= nl2br(htmlspecialchars($_SESSION["rencana_kegiatan"]["deskripsi"], ENT_QUOTES, "UTF-8")) ?>
+        </p>
+    </article>
+<?php endif; ?>
         <div class="form-group">
             <label for="nama-kegiatan">Nama Kegiatan</label>
             <input
