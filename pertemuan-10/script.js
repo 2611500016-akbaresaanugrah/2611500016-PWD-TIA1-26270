@@ -14,8 +14,6 @@ if (navToggle && navMenu) {
 }
 
 // Validasi formulir Kontak.
-// Selector menggunakan atribut/class, bukan ID formulir tertentu,
-// sehingga formulir lain dapat ditambahkan dengan ID yang berbeda.
 const contactForms = document.querySelectorAll(
   'form[data-validation="contact"]',
 );
@@ -26,7 +24,6 @@ contactForms.forEach((contactForm) => {
   const ambilInput = (nama) => contactForm.elements.namedItem(nama);
 
   contactForm.addEventListener("submit", (event) => {
-    // Mencegah pengiriman otomatis sebelum seluruh validasi selesai.
     event.preventDefault();
 
     const namaInput = ambilInput("nama");
@@ -107,8 +104,6 @@ contactForms.forEach((contactForm) => {
       return;
     }
 
-    // Mengirim formulir setelah seluruh validasi JavaScript berhasil.
-    // HTMLFormElement.submit() tidak memicu event submit kembali.
     contactForm.submit();
   });
 
